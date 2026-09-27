@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <h2 class="mb-4 background text-center rounded py-2 fw-bold text-white">Our Respected Faculty</h2>
+  <p class="text-center text-muted mb-5">
+    Meet our dedicated team of experienced educators committed to nurturing young minds and inspiring academic excellence.
+  </p>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading faculty profiles...</p>
+  </div>
+
+  <div *ngIf="!loading" class="row g-4">
+    <div class="col-md-6 col-lg-3" *ngFor="let teacher of teachers">
+      <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+        <div class="ratio ratio-1x1 bg-light">
+          <img
+            [src]="teacher.image || 'https://picsum.photos/300/300'"
+            class="card-img-top object-fit-cover"
+            [alt]="teacher.name"
+            onerror="this.src='https://picsum.photos/300/300'"
+          />
+        </div>
+        <div class="card-body p-3">
+          <h5 class="card-title fw-bold mb-1">{{ teacher.name }}</h5>
+          <div class="badge bg-primary background mb-2">{{ teacher.subject }}</div>
+          <p class="card-text text-secondary small mb-2"><strong>Role:</strong> {{ teacher.designation }}</p>
+          <p class="card-text small text-muted" *ngIf="teacher.bio">{{ teacher.bio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="teachers.length === 0" class="col-12 text-center text-muted py-5">
+      No teacher profiles available yet.
+    </div>
+  </div>
+</div>

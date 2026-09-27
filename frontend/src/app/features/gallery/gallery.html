@@ -1,0 +1,46 @@
+<div class="container text py-5">
+  <h2 class="fs-2 text-center text-decoration-underline mb-4">School Gallery</h2>
+  <p class="fs-5 text-center mb-5 text-muted">
+    Explore the vibrant moments captured at God Grace School, showcasing our students' achievements, sports, and cultural activities.
+  </p>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading gallery...</p>
+  </div>
+
+  <div *ngIf="!loading">
+    <div *ngFor="let item of galleries" class="mb-5">
+      <div class="d-flex align-items-center justify-content-between border-bottom pb-2 mb-3">
+        <h4 class="fw-bold mb-0 text-primary">{{ item.title }}</h4>
+        <span class="badge bg-secondary">{{ item.date | date:'mediumDate' }}</span>
+      </div>
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let imgUrl of getImages(item.imagesUrl)">
+          <div class="card shadow-sm border-0 rounded-3 overflow-hidden h-100">
+            <div class="ratio ratio-4x3">
+              <img
+                [src]="imgUrl"
+                class="img-fluid object-fit-cover"
+                [alt]="item.title"
+                onerror="this.src='assets/images/gallery/image.png'"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="galleries.length === 0" class="text-center text-muted py-5">
+      No gallery events uploaded yet.
+    </div>
+  </div>
+
+  <div class="alert alert-info border-start border-4 border-primary shadow-sm mt-4">
+    <h5 class="mb-2">📢 Note to Parents and Students:</h5>
+    <ul class="mb-0 small">
+      <li>All pictures published here are taken during official school activities.</li>
+      <li>For questions or image inquiries, please reach out to the school administration office.</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="background py-1">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-auto bg-danger text-white px-3 py-1 fw-bold fs-6">
+        <i class="bi bi-bell-fill me-1"></i> Notices:
+      </div>
+      <div class="col">
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="8"
+          class="notice text-white pt-1"
+          onmouseover="this.stop();"
+          onmouseout="this.start();"
+        >
+          <ng-container *ngIf="notices.length > 0; else defaultNotice">
+            <span *ngFor="let notice of notices" class="me-5">
+              <span class="badge bg-warning text-dark me-1">{{ notice.category || 'Notice' }}</span>
+              <a routerLink="/notices" class="text-white text-decoration-underline fw-semibold">
+                {{ notice.title }}
+              </a>
+              <span class="ms-1 small opacity-75">({{ notice.date | date:'mediumDate' }})</span>
+            </span>
+          </ng-container>
+          <ng-template #defaultNotice>
+            <span>Stay updated with the latest announcements, admissions, and events happening at God Grace School.</span>
+          </ng-template>
+        </marquee>
+      </div>
+    </div>
+  </div>
+</div>

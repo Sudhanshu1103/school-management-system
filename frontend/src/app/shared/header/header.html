@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg navbar-dark background sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <img
+        class="border rounded-circle me-2"
+        src="assets/images/logo.jpeg"
+        width="55"
+        height="55"
+        alt="Logo"
+      />
+      <div>
+        <h2 class="fs-4 m-0 fw-bold text-white">God Grace School</h2>
+        <span style="font-size: 11px; color: #f1efec;">Salempur Derva, Gopalganj</span>
+      </div>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mynavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admission" routerLinkActive="active">Admission</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/notices" routerLinkActive="active">Notices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gallery" routerLinkActive="active">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/teachers" routerLinkActive="active">Teachers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="moreDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="moreDropdown">
+            <li>
+              <a class="dropdown-item" routerLink="/privacy-policy">Privacy Policy</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/disclaimer">Disclaimer</a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()">
+              <a class="dropdown-item fw-semibold" routerLink="/dashboard">Admin Dashboard</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <ng-container *ngIf="authService.isLoggedIn(); else loginBtn">
+            <div class="d-flex align-items-center gap-2">
+              <a routerLink="/dashboard" class="btn btn-outline-light btn-sm px-3">
+                <i class="bi bi-speedometer2 me-1"></i> Dashboard
+              </a>
+              <button (click)="logout()" class="btn btn-danger btn-sm px-3">
+                <i class="bi bi-box-arrow-right me-1"></i> Logout
+              </button>
+            </div>
+          </ng-container>
+          <ng-template #loginBtn>
+            <a routerLink="/login" class="btn btn-light btn-sm text-dark px-3 fw-semibold">
+              <i class="bi bi-lock me-1"></i> Admin Login
+            </a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

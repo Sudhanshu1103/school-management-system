@@ -1,0 +1,29 @@
+<div class="container-fluid mt-4 border border-2 rounded p-3 bg-light">
+  <h2 class="mb-4 text text-center text-decoration-underline fs-1">
+    Dashboard
+  </h2>
+  <div class="row align-items-center mb-4">
+    <div class="col-sm-2 text-end fw-semibold">Select Dashboard:</div>
+    <div class="col-sm-3">
+      <select class="form-select" id="dashboardSelect" [(ngModel)]="section">
+        <option value="contact">Contact Dashboard</option>
+        <option value="events">Events Dashboard</option>
+        <option value="gallery">Gallery Dashboard</option>
+        <option value="notices">Notices Dashboard</option>
+        <option value="teachers">Teachers Dashboard</option>
+      </select>
+    </div>
+    <div class="col-sm-7"></div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div id="contactDashboard">
+        <app-contact-dashboard *ngIf="section === 'contact'"></app-contact-dashboard>
+        <app-events-dashboard *ngIf="section === 'events'"></app-events-dashboard>
+        <app-gallery-dashboard *ngIf="section === 'gallery'"></app-gallery-dashboard>
+        <app-notice-dashboard *ngIf="section === 'notices'"></app-notice-dashboard>
+        <app-teachers-dashboard *ngIf="section === 'teachers'"></app-teachers-dashboard>
+      </div>
+    </div>
+  </div>
+</div>

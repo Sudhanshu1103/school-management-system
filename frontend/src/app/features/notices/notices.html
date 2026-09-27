@@ -1,0 +1,68 @@
+<div class="container my-5">
+  <h2 class="mb-4 text text-center text-decoration-underline fs-1">
+    School Notices
+  </h2>
+  <p class="mb-4 text-center text-muted">
+    Stay updated with the latest announcements, circulars, and events at God Grace School.
+  </p>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading notices...</p>
+  </div>
+
+  <table *ngIf="!loading" class="table table-hover shadow-sm rounded overflow-hidden">
+    <thead>
+      <tr>
+        <th class="background">Sr No.</th>
+        <th class="background">Category</th>
+        <th class="background">Date</th>
+        <th class="background">Notice Title</th>
+        <th class="background text-end">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notice of notices; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td><span class="badge bg-secondary">{{ notice.category || 'General' }}</span></td>
+        <td>{{ notice.date | date:'mediumDate' }}</td>
+        <td class="fw-semibold">{{ notice.title }}</td>
+        <td class="text-end">
+          <button
+            class="btn btn-sm btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#noticeModal"
+            (click)="openDetails(notice)"
+          >
+            Read More
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="notices.length === 0">
+        <td colspan="5" class="text-center text-muted py-4">No notices published yet.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="noticeModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header background text-white">
+        <h5 class="modal-title">{{ selectedNotice?.title }}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="d-flex justify-content-between mb-3 text-muted small border-bottom pb-2">
+          <span><strong>Category:</strong> {{ selectedNotice?.category || 'General' }}</span>
+          <span><strong>Date:</strong> {{ selectedNotice?.date | date:'mediumDate' }}</span>
+        </div>
+        <p class="fs-6" style="white-space: pre-line;">{{ selectedNotice?.description }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

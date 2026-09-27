@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Neha Verma",
+    "subject": "Computer Science",
+    "designation": "IT Coordinator",
+    "bio": "Neha Verma ensures students learn programming, web development, and digital literacy with practical exposure to real-world tech.",
+    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Manoj Singh",
+    "subject": "Hindi",
+    "designation": "Language Specialist",
+    "bio": "Manoj Singh brings rich cultural context to Hindi literature, grammar, and writing, making language classes engaging and rooted.",
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Pooja Sharma",
+    "subject": "Art & Craft",
+    "designation": "Creative Arts Teacher",
+    "bio": "Pooja inspires creativity in children by teaching painting, origami, and craftwork. Her students often participate in art competitions.",
+    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Deepak Mehta",
+    "subject": "Physical Education",
+    "designation": "Sports Coach",
+    "bio": "Deepak is a certified fitness coach who leads physical training and sports activities, promoting health and discipline among students.",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Anjali Srivastava",
+    "subject": "Music",
+    "designation": "Music Director",
+    "bio": "Anjali trains students in classical and contemporary music, managing school choir and annual cultural performances.",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Karan Joshi",
+    "subject": "Environmental Studies",
+    "designation": "Eco Club Coordinator",
+    "bio": "Karan blends theory with practice to teach eco-awareness and leads student-driven green initiatives and plantation drives.",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Shalini Pathak",
+    "subject": "General Knowledge",
+    "designation": "Quiz Trainer",
+    "bio": "Shalini encourages curiosity and awareness by conducting weekly quizzes, debates, and knowledge-based competitions.",
+    "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&h=600&q=85"
+  },
+  {
+    "name": "Vikas Anand",
+    "subject": "Moral Science",
+    "designation": "Value Education Mentor",
+    "bio": "Vikas guides students in ethics, behavior, and empathy through interactive storytelling and real-life examples.",
+    "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&h=600&q=85"
+  }
+]

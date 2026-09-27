@@ -1,0 +1,103 @@
+<div class="container-fluid my-4">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card shadow-sm rounded-4 border-0">
+        <div class="card-header background text-white text-center rounded-top-4 py-3">
+          <h4 class="mb-0 fw-bold"><i class="bi bi-envelope-fill me-2"></i>Send Us a Message</h4>
+        </div>
+        <div class="card-body p-4">
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+            {{ successMessage }}
+            <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+            {{ errorMessage }}
+            <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+          </div>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Your Name <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                formControlName="name"
+                placeholder="Enter full name"
+              />
+              <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="text-danger small mt-1">
+                Name is required.
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="email" class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  placeholder="name@example.com"
+                />
+                <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="text-danger small mt-1">
+                  Valid email is required.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label fw-semibold">Phone Number <span class="text-danger">*</span></label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                  placeholder="+91 9876543210"
+                />
+                <div *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid" class="text-danger small mt-1">
+                  Phone number is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="subject" class="form-label fw-semibold">Subject <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                id="subject"
+                formControlName="subject"
+                placeholder="Admission, Inquiry, Feedback..."
+              />
+              <div *ngIf="form.get('subject')?.touched && form.get('subject')?.invalid" class="text-danger small mt-1">
+                Subject is required.
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="form-label fw-semibold">Message <span class="text-danger">*</span></label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="4"
+                formControlName="message"
+                placeholder="Write your inquiry or message here..."
+              ></textarea>
+              <div *ngIf="form.get('message')?.touched && form.get('message')?.invalid" class="text-danger small mt-1">
+                Message is required.
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary background w-100 py-2 rounded-3 fw-bold"
+              [disabled]="submitting"
+            >
+              <span *ngIf="submitting" class="spinner-border spinner-border-sm me-2"></span>
+              <i class="bi bi-send-fill me-2" *ngIf="!submitting"></i>Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

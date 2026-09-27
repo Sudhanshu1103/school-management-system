@@ -1,0 +1,111 @@
+<form class="row g-2 mb-3" (ngSubmit)="save()">
+  <input class="form-control col" name="title" [(ngModel)]="form.title" placeholder="Title" required>
+  <input class="form-control col" name="date" type="date" [(ngModel)]="form.date" required>
+  <input class="form-control col" name="location" [(ngModel)]="form.location" placeholder="Location" required>
+  <input class="form-control col" name="description" [(ngModel)]="form.description" placeholder="Description" required>
+  <button class="btn btn-primary col-auto" type="submit">{{ editingId ? 'Update' : 'Add' }}</button>
+  <button *ngIf="editingId" class="btn btn-secondary col-auto" type="button" (click)="editingId = null; form = emptyForm()">Cancel</button>
+</form>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th class="background">Event Title</th>
+      <th class="background">Event Date</th>
+      <th class="background">Event Time</th>
+      <th class="background">Location</th>
+      <th class="background">Published Date</th>
+      <th class="text-end background">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events">
+      <td>{{ event.title }}</td><td>{{ event.date | date }}</td><td>{{ event.location }}</td>
+      <td class="text-end"><button class="btn btn-sm btn-outline-primary me-2" (click)="edit(event)">Edit</button><button class="btn btn-sm btn-outline-danger" (click)="remove(event._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text text-center">Add/Edit Event</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <!-- Part 1: Event Details -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="eventTitle" class="form-label">Event Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="eventTitle"
+                  placeholder="Enter event title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="eventDate" class="form-label">Event Date</label>
+                <input type="date" class="form-control" id="eventDate" />
+              </div>
+              <div class="mb-3">
+                <label for="eventTime" class="form-label">Event Time</label>
+                <input type="time" class="form-control" id="eventTime" />
+              </div>
+              <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  placeholder="Enter event location"
+                />
+              </div>
+            </div>
+            <!-- Part 2: Event Description -->
+            <div class="col-md-6">
+              <div class="mb-3 h-100 d-flex flex-column">
+                <label for="eventDescription" class="form-label"
+                  >Event Description</label
+                >
+                <textarea
+                  class="form-control flex-grow-1"
+                  id="eventDescription"
+                  rows="8"
+                  placeholder="Enter event description"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger background btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
